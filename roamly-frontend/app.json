@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Roamly",
+    "slug": "roamly",
+    "version": "1.0.0",
+    "scheme": "roamly",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "51.0.0",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.roamly.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.roamly.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
