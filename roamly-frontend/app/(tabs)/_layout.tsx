@@ -5,17 +5,17 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.textSecondary,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: Colors.tabBar,
           borderTopColor: Colors.tabBarBorder,
         },
-        headerShown: false,
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.textSecondary,
       }}
     >
-      <Tabs.Screen name="my-trips" options={{ title: 'Mis viajes' }} />
-      <Tabs.Screen name="community" options={{ title: 'Comunidad' }} />
+      <Tabs.Screen name="my-trips" options={{ title: 'Mis Viajes', tabBarIcon: () => null }} />
+      <Tabs.Screen name="community" options={{ title: 'Comunidad', tabBarIcon: () => null }} />
     </Tabs>
   );
 }

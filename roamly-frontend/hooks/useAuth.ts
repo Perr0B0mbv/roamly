@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import { authService } from '../services/authService';
 import { AuthResponse } from '../types';
 
 const ACCESS_TOKEN_KEY = 'roamly_access_token';
@@ -36,6 +37,26 @@ export function useAuth() {
     setAccessToken(auth.accessToken);
   };
 
+  const login = async (email: string, password: string) => {
+    setIsLoading(true);
+    try {
+      const auth = await authService.login(email, password);
+      await saveSession(auth);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const register = async (username: string, email: string, password: string) => {
+    setIsLoading(true);
+    try {
+      const auth = await authService.register(username, email, password);
+      await saveSession(auth);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const clearSession = async () => {
     await SecureStore.deleteItemAsync(ACCESS_TOKEN_KEY);
     await SecureStore.deleteItemAsync(REFRESH_TOKEN_KEY);
@@ -47,6 +68,8 @@ export function useAuth() {
     accessToken,
     isLoading,
     isAuthenticated: !!accessToken,
+    login,
+    register,
     saveSession,
     clearSession,
   };
